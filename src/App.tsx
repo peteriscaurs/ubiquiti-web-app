@@ -1,10 +1,9 @@
-import ubiquitiLogo from '/Ubiquiti_logo.png'
+import Header from './Header'
 
 function App() {
   return (
     <>
-      <div>Hello Ubiquiti</div>
-      <img src={ubiquitiLogo} alt="Ubiquiti Logo" />
+      <Header author="Pēteris Čaurs" />
     </>
   )
 }

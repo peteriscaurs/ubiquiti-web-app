@@ -12,7 +12,7 @@ const StyledToolbar = styled.nav`
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid rgb(237, 237, 240);
-  padding: 14px;
+  padding: 8px 14px;
 `
 
 const StyledActions = styled.div`

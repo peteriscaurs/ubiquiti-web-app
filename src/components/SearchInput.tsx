@@ -9,7 +9,7 @@ const SearchContainer = styled.span`
   padding: 0px 8px;
   border-radius: 4px;
   height: 32px;
-  width: 270px;
+  width: 380px;
 `
 
 const StyledSearchInput = styled.input`

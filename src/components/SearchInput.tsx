@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import searchIcon from '../assets/search_icon.svg'
-import { useState } from 'react'
 import CrossButton from './CrossButton'
+import { useSearchParams } from 'react-router-dom'
 
 const SearchContainer = styled.span`
   display: inline-flex;
@@ -21,19 +21,35 @@ const StyledSearchInput = styled.input`
     outline: none;
   }
 `
-
 export default function SearchInput() {
-  const [searchQuery, setSearchQuery] = useState('')
+  const [searchParams, setSearchParams] = useSearchParams({
+    query: '',
+  })
+
+  const handleSearchOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchParams((prev) => {
+      prev.set('query', event.target.value)
+      return prev
+    })
+  }
 
   return (
     <SearchContainer>
       <img src={searchIcon} alt="Search" style={{ padding: '6px 0px' }} />
       <StyledSearchInput
         placeholder="Search"
-        onChange={(event) => setSearchQuery(event.target.value)}
-        value={searchQuery}
+        onChange={handleSearchOnChange}
+        value={searchParams.get('query') || ''}
       />
-      <CrossButton handleOnClick={() => setSearchQuery('')} color="lightGray" />
+      <CrossButton
+        handleOnClick={() => {
+          setSearchParams((prev) => {
+            prev.set('query', '')
+            return prev
+          })
+        }}
+        color="lightGray"
+      />
     </SearchContainer>
   )
 }

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { View } from '../Toolbar'
 
 const StyledActionButton = styled.button`
   border: none;
@@ -6,9 +7,9 @@ const StyledActionButton = styled.button`
 `
 
 interface ActionButtonProps {
-  name: string
+  name: View
   isActive: boolean
-  handleOnClick: (isActive: boolean) => void
+  handleOnClick: (view: View) => void
   activeIcon: string
   defaultIcon: string
 }
@@ -23,7 +24,7 @@ export default function ActionButton({
   return (
     <StyledActionButton
       onClick={() => {
-        handleOnClick(!isActive)
+        handleOnClick(name)
       }}
     >
       {isActive ? (

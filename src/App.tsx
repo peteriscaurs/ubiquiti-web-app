@@ -4,8 +4,13 @@ import Header from './Header'
 import Toolbar from './Toolbar'
 import axios from 'axios'
 import { Device } from './api'
+import { useSearchParams } from 'react-router-dom'
+import DeviceGrid from './DeviceGrid'
 
 function App() {
+  const [searchParams] = useSearchParams()
+  const view = searchParams.get('view')
+
   const [deviceList, setDeviceList] = useState<Device[]>([])
 
   useEffect(() => {
@@ -18,7 +23,11 @@ function App() {
     <>
       <Header author="Pēteris Čaurs" />
       <Toolbar />
-      <DeviceList devices={deviceList} />
+      {!view || view === 'list' ? (
+        <DeviceList devices={deviceList} />
+      ) : (
+        <DeviceGrid devices={deviceList} />
+      )}
     </>
   )
 }

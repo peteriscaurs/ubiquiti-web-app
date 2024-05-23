@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Device } from './api'
+import { useSearchParams } from 'react-router-dom'
 
 const DeviceListContainer = styled.div`
   margin: 23px 104px;
@@ -33,6 +34,14 @@ interface DeviceListProps {
 }
 
 export default function DeviceList({ devices }: DeviceListProps) {
+  const [searchParams] = useSearchParams()
+
+  const query = searchParams.get('query')
+
+  const filteredDevices = devices.filter((device) =>
+    device.product.name.toLowerCase().includes(query || ''),
+  )
+
   return (
     <DeviceListContainer>
       <StyledTable>
@@ -46,7 +55,7 @@ export default function DeviceList({ devices }: DeviceListProps) {
           </tr>
         </thead>
         <tbody>
-          {devices.map((device) => (
+          {filteredDevices.map((device) => (
             <tr>
               <IconCell colSpan={1}>
                 <img

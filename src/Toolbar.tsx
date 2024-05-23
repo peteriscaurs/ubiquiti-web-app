@@ -3,10 +3,10 @@ import listDefault from './assets/list_default.svg'
 import listActive from './assets/list_active.svg'
 import gridDefault from './assets/grid_default.svg'
 import gridActive from './assets/grid_active.svg'
-import { useState } from 'react'
 import ActionButton from './components/ActionButton'
 import SearchInput from './components/SearchInput'
 import SelectFilter from './components/SelectFilter'
+import { useSearchParams } from 'react-router-dom'
 
 const StyledToolbar = styled.nav`
   display: flex;
@@ -19,28 +19,39 @@ const StyledActions = styled.div`
   display: flex;
   gap: 8px;
 `
+export type View = 'list' | 'grid'
 
 export default function Toolbar() {
-  const [isListActive, setIsListActive] = useState(false)
-  const [isGridActive, setIsGridActive] = useState(false)
+  const [searchParams, setSearchParams] = useSearchParams({
+    view: 'list',
+  })
+
+  const view = searchParams.get('view')
+
+  const handleViewOnClick = (view: View) => {
+    setSearchParams((prev) => {
+      prev.set('view', view)
+      return prev
+    })
+  }
 
   return (
     <StyledToolbar>
       <SearchInput />
       <StyledActions>
         <ActionButton
-          name="List"
+          name="list"
           defaultIcon={listDefault}
           activeIcon={listActive}
-          isActive={isListActive}
-          handleOnClick={setIsListActive}
+          isActive={view === 'list'}
+          handleOnClick={handleViewOnClick}
         />
         <ActionButton
-          name="Grid"
+          name="grid"
           defaultIcon={gridDefault}
           activeIcon={gridActive}
-          isActive={isGridActive}
-          handleOnClick={setIsGridActive}
+          isActive={view === 'grid'}
+          handleOnClick={handleViewOnClick}
         />
         <SelectFilter />
       </StyledActions>

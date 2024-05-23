@@ -37,10 +37,13 @@ export default function DeviceList({ devices }: DeviceListProps) {
   const [searchParams] = useSearchParams()
 
   const query = searchParams.get('query')
+  const lines = searchParams.get('lines')
 
-  const filteredDevices = devices.filter((device) =>
-    device.product.name.toLowerCase().includes(query || ''),
-  )
+  const filteredDevices = devices
+    .filter((device) => device.product.name.toLowerCase().includes(query || ''))
+    .filter((device) =>
+      lines?.length ? lines?.includes(device.line.name) : device,
+    )
 
   return (
     <DeviceListContainer>

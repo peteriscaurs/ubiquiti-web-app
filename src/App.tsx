@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, createContext } from 'react'
 import DeviceList from './DeviceList'
 import Header from './Header'
 import Toolbar from './Toolbar'
@@ -6,6 +6,12 @@ import axios from 'axios'
 import { Device } from './api'
 import { useSearchParams } from 'react-router-dom'
 import DeviceGrid from './DeviceGrid'
+
+interface AppContextType {
+  deviceList: Device[]
+}
+
+export const AppContext = createContext<AppContextType>({})
 
 function App() {
   const [searchParams] = useSearchParams()
@@ -20,7 +26,7 @@ function App() {
   }, [])
 
   return (
-    <>
+    <AppContext.Provider value={{ deviceList }}>
       <Header author="Pēteris Čaurs" />
       <Toolbar />
       {!view || view === 'list' ? (
@@ -28,7 +34,7 @@ function App() {
       ) : (
         <DeviceGrid devices={deviceList} />
       )}
-    </>
+    </AppContext.Provider>
   )
 }
 

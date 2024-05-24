@@ -5,8 +5,8 @@ import { Link, useLocation } from 'react-router-dom'
 const StyledActionButton = styled(Link)`
   border: none;
   background-color: white;
-  display: flex;
-  place-content: center;
+  width: 21px;
+  height: 20px;
 `
 
 interface ActionButtonProps {

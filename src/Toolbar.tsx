@@ -16,6 +16,8 @@ const StyledToolbar = styled.nav`
 
 const StyledActions = styled.div`
   display: flex;
+  align-items: center;
+  padding-left: 14px;
   gap: 8px;
 `
 export type View = 'list' | 'grid'

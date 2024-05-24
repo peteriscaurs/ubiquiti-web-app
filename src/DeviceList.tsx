@@ -43,7 +43,7 @@ export default function DeviceList({ devices }: DeviceListProps) {
         <thead>
           <tr>
             <IconCell style={{ color: '#BDBDBD' }} colSpan={1}>
-              {devices.length} devices
+              {filteredDevices.length} devices
             </IconCell>
             <TableHeadCell colSpan={2}>PRODUCT LINE</TableHeadCell>
             <TableHeadCell colSpan={5}>NAME</TableHeadCell>

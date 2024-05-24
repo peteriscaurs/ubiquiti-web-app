@@ -61,7 +61,7 @@ export default function DeviceGrid({ devices }: DeviceListProps) {
 
   return (
     <DeviceGridContainer>
-      <StyledDevicesCount>{devices.length} devices</StyledDevicesCount>
+      <StyledDevicesCount>{filteredDevices.length} devices</StyledDevicesCount>
       <StyledGrid>
         {filteredDevices.map((device) => (
           <DeviceCard>

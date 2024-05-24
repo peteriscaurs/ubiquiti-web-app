@@ -5,6 +5,8 @@ import axios from 'axios'
 import { Device } from './api'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import DevicesView from './DevicesView'
+import DeviceInfo from './DeviceInfo'
+import NotFoundView from './NotFoundView'
 
 interface AppContextType {
   deviceList: Device[]
@@ -27,7 +29,9 @@ function App() {
       <Toolbar />
       <Routes>
         <Route path="/" element={<Navigate to="/devices/list" />} />
-        <Route path="devices/:view" element={<DevicesView />} />
+        <Route path="/devices/:view" element={<DevicesView />} />
+        <Route path="/devices/:view/:id" element={<DeviceInfo />} />
+        <Route path="*" element={<NotFoundView />} />
       </Routes>
     </AppContext.Provider>
   )

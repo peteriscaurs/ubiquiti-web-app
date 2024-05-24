@@ -43,39 +43,52 @@ export default function DeviceInfo() {
           alt={`${id}`}
         />
         <StyledProductDetails>
-          <ProductDetailsRow>
-            <DetailsText>Product line</DetailsText>
-            <DetailsText>{device?.line.name}</DetailsText>
-          </ProductDetailsRow>
-          <ProductDetailsRow>
-            <DetailsText>ID</DetailsText>
-            <DetailsText>{device?.line.id}</DetailsText>
-          </ProductDetailsRow>
-          <ProductDetailsRow>
-            <DetailsText>Name</DetailsText>
-            <DetailsText>{device?.product.name}</DetailsText>
-          </ProductDetailsRow>
-          <ProductDetailsRow>
-            <DetailsText>Short Name</DetailsText>
-            <DetailsText>{device?.shortnames[0]}</DetailsText>
-          </ProductDetailsRow>
-          <ProductDetailsRow>
-            <DetailsText>Max. power</DetailsText>
-            <DetailsText>
-              {device?.unifi?.network?.radios.na?.maxPower} W
-            </DetailsText>
-          </ProductDetailsRow>
-          <ProductDetailsRow>
-            <DetailsText>Speed</DetailsText>
-            <DetailsText>
-              {device?.unifi?.network?.radios.na?.maxSpeedMegabitsPerSecond}{' '}
-              Mbps
-            </DetailsText>
-          </ProductDetailsRow>
-          <ProductDetailsRow>
-            <DetailsText>Number of ports</DetailsText>
-            <DetailsText>{device?.unifi?.network?.numberOfPorts}</DetailsText>
-          </ProductDetailsRow>
+          {device?.line.name && (
+            <ProductDetailsRow>
+              <DetailsText>Product line</DetailsText>
+              <DetailsText>{device.line.name}</DetailsText>
+            </ProductDetailsRow>
+          )}
+          {device?.line.id && (
+            <ProductDetailsRow>
+              <DetailsText>ID</DetailsText>
+              <DetailsText>{device.line.id}</DetailsText>
+            </ProductDetailsRow>
+          )}
+          {device?.product.name && (
+            <ProductDetailsRow>
+              <DetailsText>Name</DetailsText>
+              <DetailsText>{device.product.name}</DetailsText>
+            </ProductDetailsRow>
+          )}
+          {device?.shortnames[0] && (
+            <ProductDetailsRow>
+              <DetailsText>Short Name</DetailsText>
+              <DetailsText>{device.shortnames[0]}</DetailsText>
+            </ProductDetailsRow>
+          )}
+          {device?.unifi?.network?.radios.na?.maxPower && (
+            <ProductDetailsRow>
+              <DetailsText>Max. power</DetailsText>
+              <DetailsText>
+                {device.unifi.network.radios.na.maxPower} W
+              </DetailsText>
+            </ProductDetailsRow>
+          )}
+          {device?.unifi?.network?.radios.na?.maxSpeedMegabitsPerSecond && (
+            <ProductDetailsRow>
+              <DetailsText>Speed</DetailsText>
+              <DetailsText>
+                {device.unifi.network.radios.na.maxSpeedMegabitsPerSecond} Mbps
+              </DetailsText>
+            </ProductDetailsRow>
+          )}
+          {device?.unifi?.network?.numberOfPorts && (
+            <ProductDetailsRow>
+              <DetailsText>Number of ports</DetailsText>
+              <DetailsText>{device.unifi.network.numberOfPorts}</DetailsText>
+            </ProductDetailsRow>
+          )}
         </StyledProductDetails>
       </StyledProductBody>
     </DeviceInfoContainer>

@@ -43,6 +43,11 @@ const DropdownMenuItem = styled.li`
   }
 `
 
+const ScrollableSection = styled.div`
+  height: 400px;
+  overflow-y: scroll;
+`
+
 const StyledCheckbox = styled.input`
   margin-right: 8px;
   width: 16px;
@@ -116,38 +121,40 @@ export default function SelectFilter() {
           <span>Filter</span>
           <CrossButton handleOnClick={toggleDropdown} />
         </CloseFilter>
-        <FilterName>
-          <strong>Product line</strong>
-        </FilterName>
-        {productLines.map((device) => (
-          <DropdownMenuItem
-            key={device.id}
-            onClick={() => {
-              setSearchParams((prev) => {
-                const prevLines = deserialize(prev.get('lines') || '')
-                prevLines.includes(device.line.name)
-                  ? prev.set(
-                      'lines',
-                      serialize(
-                        prevLines.filter((item) => item !== device.line.name),
-                      ),
-                    )
-                  : prev.set(
-                      'lines',
-                      serialize([...prevLines, device.line.name]),
-                    )
-                return prev
-              })
-            }}
-          >
-            <StyledCheckbox
-              type="checkbox"
-              checked={checkedItems.includes(device.line.name)}
-              onChange={() => {}}
-            />
-            {device.line.name}
-          </DropdownMenuItem>
-        ))}
+        <ScrollableSection>
+          <FilterName>
+            <strong>Product line</strong>
+          </FilterName>
+          {productLines.map((device) => (
+            <DropdownMenuItem
+              key={device.id}
+              onClick={() => {
+                setSearchParams((prev) => {
+                  const prevLines = deserialize(prev.get('lines') || '')
+                  prevLines.includes(device.line.name)
+                    ? prev.set(
+                        'lines',
+                        serialize(
+                          prevLines.filter((item) => item !== device.line.name),
+                        ),
+                      )
+                    : prev.set(
+                        'lines',
+                        serialize([...prevLines, device.line.name]),
+                      )
+                  return prev
+                })
+              }}
+            >
+              <StyledCheckbox
+                type="checkbox"
+                checked={checkedItems.includes(device.line.name)}
+                onChange={() => {}}
+              />
+              {device.line.name}
+            </DropdownMenuItem>
+          ))}
+        </ScrollableSection>
       </DropdownMenu>
     </>
   )

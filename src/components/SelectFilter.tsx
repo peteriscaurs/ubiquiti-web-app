@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import CrossButton from './CrossButton'
 import { AppContext } from '../App'
@@ -76,7 +76,26 @@ export default function SelectFilter() {
 
   const productLines = uniqueLines(deviceList)
 
+  const dropdownRef = useRef(null)
+
   const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        event.target &&
+        !(dropdownRef.current as HTMLElement).contains(event.target as Node)
+      ) {
+        setIsOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
 
   const [searchParams, setSearchParams] = useSearchParams({
     lines: [],
@@ -88,7 +107,7 @@ export default function SelectFilter() {
   return (
     <>
       <StyledButton onClick={toggleDropdown}>Filter</StyledButton>
-      <DropdownMenu isOpen={isOpen}>
+      <DropdownMenu ref={dropdownRef} isOpen={isOpen}>
         <CloseFilter>
           <span>Filter</span>
           <CrossButton handleOnClick={toggleDropdown} />
@@ -97,27 +116,28 @@ export default function SelectFilter() {
           <strong>Product line</strong>
         </FilterName>
         {productLines.map((device) => (
-          <DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => {
+              setSearchParams((prev) => {
+                const prevLines = deserialize(prev.get('lines') || '')
+                prevLines.includes(device.line.name)
+                  ? prev.set(
+                      'lines',
+                      serialize(
+                        prevLines.filter((item) => item !== device.line.name),
+                      ),
+                    )
+                  : prev.set(
+                      'lines',
+                      serialize([...prevLines, device.line.name]),
+                    )
+                return prev
+              })
+            }}
+          >
             <StyledCheckbox
               type="checkbox"
               checked={checkedItems.includes(device.line.name)}
-              onChange={() => {
-                setSearchParams((prev) => {
-                  const prevLines = deserialize(prev.get('lines') || '')
-                  prevLines.includes(device.line.name)
-                    ? prev.set(
-                        'lines',
-                        serialize(
-                          prevLines.filter((item) => item !== device.line.name),
-                        ),
-                      )
-                    : prev.set(
-                        'lines',
-                        serialize([...prevLines, device.line.name]),
-                      )
-                  return prev
-                })
-              }}
             />
             {device.line.name}
           </DropdownMenuItem>

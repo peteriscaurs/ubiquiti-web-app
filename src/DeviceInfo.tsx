@@ -34,7 +34,6 @@ export default function DeviceInfo() {
   const { deviceList } = useContext(AppContext)
 
   const device = deviceList.find((device) => device.id === id)
-  console.log(device)
 
   return (
     <DeviceInfoContainer>

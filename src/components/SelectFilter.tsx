@@ -14,8 +14,12 @@ const StyledButton = styled.button`
   background-color: white;
 `
 
-const DropdownMenu = styled.ul<{ isOpen: boolean }>`
-  display: ${(props) => (props.isOpen ? 'block' : 'none')};
+interface DropdownMenuProps {
+  $isOpen: boolean
+}
+
+const DropdownMenu = styled.ul<DropdownMenuProps>`
+  display: ${(props) => (props.$isOpen ? 'block' : 'none')};
   position: absolute;
   right: 0;
   top: 56px;
@@ -107,7 +111,7 @@ export default function SelectFilter() {
   return (
     <>
       <StyledButton onClick={toggleDropdown}>Filter</StyledButton>
-      <DropdownMenu ref={dropdownRef} isOpen={isOpen}>
+      <DropdownMenu ref={dropdownRef} $isOpen={isOpen}>
         <CloseFilter>
           <span>Filter</span>
           <CrossButton handleOnClick={toggleDropdown} />
@@ -117,6 +121,7 @@ export default function SelectFilter() {
         </FilterName>
         {productLines.map((device) => (
           <DropdownMenuItem
+            key={device.id}
             onClick={() => {
               setSearchParams((prev) => {
                 const prevLines = deserialize(prev.get('lines') || '')
@@ -138,6 +143,7 @@ export default function SelectFilter() {
             <StyledCheckbox
               type="checkbox"
               checked={checkedItems.includes(device.line.name)}
+              onChange={() => {}}
             />
             {device.line.name}
           </DropdownMenuItem>

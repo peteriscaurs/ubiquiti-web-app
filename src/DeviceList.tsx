@@ -52,7 +52,7 @@ export default function DeviceList({ devices }: DeviceListProps) {
         </thead>
         <tbody>
           {filteredDevices.map((device) => (
-            <tr>
+            <tr key={device.id}>
               <IconCell colSpan={1}>
                 <img
                   src={`https://static.ui.com/fingerprint/ui/icons/${device.icon.id}_${device.icon.resolutions[1][0]}x${device.icon.resolutions[1][1]}.png`}

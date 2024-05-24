@@ -12,7 +12,7 @@ interface AppContextType {
   deviceList: Device[]
 }
 
-export const AppContext = createContext<AppContextType>({})
+export const AppContext = createContext<AppContextType>({ deviceList: [] })
 
 function App() {
   const [deviceList, setDeviceList] = useState<Device[]>([])

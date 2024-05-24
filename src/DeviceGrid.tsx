@@ -64,7 +64,7 @@ export default function DeviceGrid({ devices }: DeviceListProps) {
       <StyledDevicesCount>{filteredDevices.length} devices</StyledDevicesCount>
       <StyledGrid>
         {filteredDevices.map((device) => (
-          <DeviceCard>
+          <DeviceCard key={device.id}>
             <ImageContainer>
               <img
                 src={`https://static.ui.com/fingerprint/ui/icons/${device.icon.id}_${device.icon.resolutions[7][0]}x${device.icon.resolutions[7][1]}.png`}

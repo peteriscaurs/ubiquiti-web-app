@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Device } from './api'
 import { useFilteredDevices } from './useFilteredDevices'
-import { Link } from 'react-router-dom'
+import StyledLink from './components/StyledLink'
 
 const DeviceListContainer = styled.div`
   margin: 23px 104px;
@@ -16,7 +16,7 @@ const StyledTable = styled.table`
 const TableCell = styled.td`
   padding: 5px;
   border-bottom: 1px solid rgb(237, 237, 240);
-  color: rgba(0, 0, 0, 0.65);
+  color: rgba(0, 0, 0, 0.45);
 `
 
 const TableHeadCell = styled(TableCell)`
@@ -61,9 +61,9 @@ export default function DeviceList({ devices }: DeviceListProps) {
               </IconCell>
               <TableCell colSpan={2}>{device.line.name}</TableCell>
               <TableCell colSpan={5}>
-                <Link to={`/devices/list/${device.id}`}>
+                <StyledLink to={`/devices/list/${device.id}`}>
                   {device.product.name}
-                </Link>
+                </StyledLink>
               </TableCell>
             </tr>
           ))}

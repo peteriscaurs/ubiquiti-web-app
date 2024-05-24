@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { Device } from './api'
 import { useFilteredDevices } from './useFilteredDevices'
+import StyledLink from './components/StyledLink'
 
 const DeviceGridContainer = styled.div`
   margin: 23px 55px;
@@ -44,10 +45,6 @@ const StyledDevicesCount = styled.p`
   margin-bottom: 14px;
 `
 
-const StyledProductName = styled.p`
-  color: rgba(0, 0, 0, 0.65);
-`
-
 const StyledLineName = styled.p`
   color: rgba(0, 0, 0, 0.45);
 `
@@ -73,7 +70,9 @@ export default function DeviceGrid({ devices }: DeviceListProps) {
               />
             </ImageContainer>
             <CardBody>
-              <StyledProductName>{device.product.name}</StyledProductName>
+              <StyledLink to={`/devices/grid/${device.id}`}>
+                {device.product.name}
+              </StyledLink>
               <StyledLineName>{device.line.name}</StyledLineName>
             </CardBody>
           </DeviceCard>

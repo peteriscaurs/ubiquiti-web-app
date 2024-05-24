@@ -6,7 +6,6 @@ import gridActive from './assets/grid_active.svg'
 import ActionButton from './components/ActionButton'
 import SearchInput from './components/SearchInput'
 import SelectFilter from './components/SelectFilter'
-import { useSearchParams } from 'react-router-dom'
 
 const StyledToolbar = styled.nav`
   display: flex;
@@ -22,19 +21,6 @@ const StyledActions = styled.div`
 export type View = 'list' | 'grid'
 
 export default function Toolbar() {
-  const [searchParams, setSearchParams] = useSearchParams({
-    view: 'list',
-  })
-
-  const view = searchParams.get('view')
-
-  const handleViewOnClick = (view: View) => {
-    setSearchParams((prev) => {
-      prev.set('view', view)
-      return prev
-    })
-  }
-
   return (
     <StyledToolbar>
       <SearchInput />
@@ -43,15 +29,11 @@ export default function Toolbar() {
           name="list"
           defaultIcon={listDefault}
           activeIcon={listActive}
-          isActive={view === 'list'}
-          handleOnClick={handleViewOnClick}
         />
         <ActionButton
           name="grid"
           defaultIcon={gridDefault}
           activeIcon={gridActive}
-          isActive={view === 'grid'}
-          handleOnClick={handleViewOnClick}
         />
         <SelectFilter />
       </StyledActions>

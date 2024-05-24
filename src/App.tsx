@@ -1,11 +1,10 @@
 import { useEffect, useState, createContext } from 'react'
-import DeviceList from './DeviceList'
 import Header from './Header'
 import Toolbar from './Toolbar'
 import axios from 'axios'
 import { Device } from './api'
-import { useSearchParams } from 'react-router-dom'
-import DeviceGrid from './DeviceGrid'
+import { Navigate, Route, Routes } from 'react-router-dom'
+import DevicesView from './DevicesView'
 
 interface AppContextType {
   deviceList: Device[]
@@ -14,9 +13,6 @@ interface AppContextType {
 export const AppContext = createContext<AppContextType>({})
 
 function App() {
-  const [searchParams] = useSearchParams()
-  const view = searchParams.get('view')
-
   const [deviceList, setDeviceList] = useState<Device[]>([])
 
   useEffect(() => {
@@ -29,11 +25,10 @@ function App() {
     <AppContext.Provider value={{ deviceList }}>
       <Header author="Pēteris Čaurs" />
       <Toolbar />
-      {!view || view === 'list' ? (
-        <DeviceList devices={deviceList} />
-      ) : (
-        <DeviceGrid devices={deviceList} />
-      )}
+      <Routes>
+        <Route path="/" element={<Navigate to="/devices/list" />} />
+        <Route path="devices/:view" element={<DevicesView />} />
+      </Routes>
     </AppContext.Provider>
   )
 }

@@ -1,32 +1,32 @@
 import styled from 'styled-components'
 import { View } from '../Toolbar'
+import { Link, useLocation } from 'react-router-dom'
 
-const StyledActionButton = styled.button`
+const StyledActionButton = styled(Link)`
   border: none;
   background-color: white;
+  display: flex;
+  place-content: center;
 `
 
 interface ActionButtonProps {
   name: View
-  isActive: boolean
-  handleOnClick: (view: View) => void
   activeIcon: string
   defaultIcon: string
 }
 
 export default function ActionButton({
   name,
-  isActive,
-  handleOnClick,
   activeIcon,
   defaultIcon,
 }: ActionButtonProps) {
+  const location = useLocation()
+  const view = location.pathname.split('/').pop()
+
+  const isActive = view === name
+
   return (
-    <StyledActionButton
-      onClick={() => {
-        handleOnClick(name)
-      }}
-    >
+    <StyledActionButton to={`/devices/${name}`}>
       {isActive ? (
         <img src={activeIcon} alt={`${name} Active`} />
       ) : (

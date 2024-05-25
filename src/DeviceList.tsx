@@ -29,6 +29,7 @@ const IconCell = styled(TableCell)`
   display: flex;
   justify-content: end;
   padding-right: 24px;
+  font-size: 14px;
 `
 
 interface DeviceListProps {

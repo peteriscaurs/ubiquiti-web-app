@@ -43,6 +43,7 @@ const CardBody = styled.div`
 const StyledDevicesCount = styled.p`
   color: rgb(189, 189, 189);
   margin-bottom: 14px;
+  font-size: 14px;
 `
 
 const StyledLineName = styled.p`

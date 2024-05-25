@@ -1,9 +1,11 @@
 import { useContext, useEffect, useRef, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import styled from 'styled-components'
-import CrossButton from './CrossButton'
+import IconButton from './IconButton'
 import { AppContext } from '../App'
 import { Device } from '../api'
-import { useSearchParams } from 'react-router-dom'
+import closeIcon from '../assets/close_icon.svg'
+import { headerHeight, toolbarHeight } from '../constants'
 
 const serialize = (selectedIds: string[]) => selectedIds.join(',')
 
@@ -22,7 +24,7 @@ const DropdownMenu = styled.ul<DropdownMenuProps>`
   display: ${(props) => (props.$isOpen ? 'block' : 'none')};
   position: absolute;
   right: 0;
-  top: 56px;
+  top: ${headerHeight};
   list-style-type: none;
   padding: 0;
   background-color: white;
@@ -60,7 +62,7 @@ const CloseFilter = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 49px;
+  height: ${toolbarHeight};
   padding: 0px 14px;
   border-bottom: 1px solid rgb(237, 237, 240);
 `
@@ -119,7 +121,7 @@ export default function SelectFilter() {
       <DropdownMenu ref={dropdownRef} $isOpen={isOpen}>
         <CloseFilter>
           <span>Filter</span>
-          <CrossButton handleOnClick={toggleDropdown} />
+          <IconButton icon={closeIcon} handleOnClick={toggleDropdown} />
         </CloseFilter>
         <ScrollableSection>
           <FilterName>

@@ -1,7 +1,8 @@
 import styled from 'styled-components'
-import searchIcon from '../assets/search_icon.svg'
-import CrossButton from './CrossButton'
 import { useSearchParams } from 'react-router-dom'
+import searchIcon from '../assets/search_icon.svg'
+import closeIcon from '../assets/close_icon.svg'
+import IconButton from './IconButton'
 
 const SearchContainer = styled.span`
   display: inline-flex;
@@ -41,7 +42,8 @@ export default function SearchInput() {
         onChange={handleSearchOnChange}
         value={searchParams.get('query') || ''}
       />
-      <CrossButton
+      <IconButton
+        icon={closeIcon}
         handleOnClick={() => {
           setSearchParams((prev) => {
             prev.set('query', '')

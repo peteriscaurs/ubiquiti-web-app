@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { View } from '../Toolbar'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const StyledActionButton = styled(Link)`
   border: none;
@@ -13,18 +13,15 @@ interface ActionButtonProps {
   name: View
   activeIcon: string
   defaultIcon: string
+  isActive: boolean
 }
 
 export default function ActionButton({
   name,
   activeIcon,
   defaultIcon,
+  isActive,
 }: ActionButtonProps) {
-  const location = useLocation()
-  const view = location.pathname.split('/').pop()
-
-  const isActive = view === name
-
   return (
     <StyledActionButton to={`/devices/${name}`}>
       {isActive ? (

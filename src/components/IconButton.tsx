@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import closeIcon from '../assets/close_icon.svg'
 
 const colors = {
   white: 'white',
@@ -14,15 +13,17 @@ const StyledButton = styled.button<{ color: keyof typeof colors }>`
 interface CrossButtonProps {
   handleOnClick: () => void
   color?: keyof typeof colors
+  icon: string
 }
 
-export default function CrossButton({
+export default function IconButton({
   handleOnClick,
   color = 'white',
+  icon,
 }: CrossButtonProps) {
   return (
     <StyledButton onClick={handleOnClick} color={color}>
-      <img src={closeIcon} alt="" />
+      <img src={icon} alt="" />
     </StyledButton>
   )
 }

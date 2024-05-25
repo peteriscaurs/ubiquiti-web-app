@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import ubiquitiLogo from '/Ubiquiti_logo.svg'
+import { headerHeight } from './constants'
 
 const StyledHeader = styled.header`
   display: flex;
@@ -7,6 +8,7 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   background-color: rgb(246, 246, 248);
   border-bottom: 1px solid rgb(237, 237, 240);
+  height: ${headerHeight};
 `
 
 const StyledAppName = styled.div`

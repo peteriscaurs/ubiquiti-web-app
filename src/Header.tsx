@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import ubiquitiLogo from '/Ubiquiti_logo.svg'
 import { headerHeight } from './constants'
+import LogoLink from './components/LogoLink'
 
 const StyledHeader = styled.header`
   display: flex;
@@ -36,7 +36,7 @@ export default function Header({ author }: HeaderProps) {
   return (
     <StyledHeader>
       <StyledAppName>
-        <img src={ubiquitiLogo} alt="Ubiquiti Logo" />
+        <LogoLink />
         <h1>Devices</h1>
       </StyledAppName>
       <StyledAuthorName>Author/{author}</StyledAuthorName>

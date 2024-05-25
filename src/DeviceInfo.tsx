@@ -12,6 +12,11 @@ const DeviceInfoContainer = styled.div`
 const StyledProductBody = styled.div`
   display: flex;
   align-items: center;
+  @media (max-width: 768px) {
+    & {
+      flex-direction: column;
+    }
+  }
 `
 
 const StyledProductDetails = styled.div`

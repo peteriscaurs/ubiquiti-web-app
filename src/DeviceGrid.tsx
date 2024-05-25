@@ -1,7 +1,10 @@
 import styled from 'styled-components'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { Device } from './api'
 import { useFilteredDevices } from './useFilteredDevices'
 import StyledLink from './components/StyledLink'
+
+import 'react-lazy-load-image-component/src/effects/opacity.css'
 
 const DeviceGridContainer = styled.div`
   margin: 23px 55px;
@@ -64,10 +67,13 @@ export default function DeviceGrid({ devices }: DeviceListProps) {
         {filteredDevices.map((device) => (
           <DeviceCard key={device.id}>
             <ImageContainer>
-              <img
-                src={`https://static.ui.com/fingerprint/ui/icons/${device.icon.id}_${device.icon.resolutions[7][0]}x${device.icon.resolutions[7][1]}.png`}
+              <LazyLoadImage
+                src={`https://static.ui.com/fingerprint/ui/icons/${device.icon.id}_${256}x${256}.png`}
                 alt={`${device.product.name}`}
                 style={{ objectFit: 'cover' }}
+                width={160}
+                height={160}
+                effect="opacity"
               />
             </ImageContainer>
             <CardBody>

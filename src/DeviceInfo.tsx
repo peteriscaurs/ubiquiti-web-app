@@ -1,7 +1,10 @@
+import { useContext } from 'react'
 import { useParams } from 'react-router-dom'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 import styled from 'styled-components'
 import { AppContext } from './App'
-import { useContext } from 'react'
+
+import 'react-lazy-load-image-component/src/effects/opacity.css'
 
 const DeviceInfoContainer = styled.div`
   margin-top: 160px;
@@ -43,9 +46,13 @@ export default function DeviceInfo() {
   return (
     <DeviceInfoContainer>
       <StyledProductBody>
-        <img
+        <LazyLoadImage
           src={`https://static.ui.com/fingerprint/ui/icons/${device?.icon.id}_${256}x${256}.png`}
           alt={`${id}`}
+          style={{ objectFit: 'cover' }}
+          width={256}
+          height={256}
+          effect="opacity"
         />
         <StyledProductDetails>
           {device?.line.name && (

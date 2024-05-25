@@ -1,7 +1,10 @@
 import styled from 'styled-components'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { Device } from './api'
 import { useFilteredDevices } from './useFilteredDevices'
 import StyledLink from './components/StyledLink'
+
+import 'react-lazy-load-image-component/src/effects/opacity.css'
 
 const DeviceListContainer = styled.div`
   margin: 23px 104px;
@@ -67,10 +70,14 @@ export default function DeviceList({ devices }: DeviceListProps) {
             <StyledRow key={device.id}>
               <IconCell colSpan={1}>
                 <div style={{ display: 'flex', justifyContent: 'end' }}>
-                  <img
-                    src={`https://static.ui.com/fingerprint/ui/icons/${device.icon.id}_${device.icon.resolutions[1][0]}x${device.icon.resolutions[1][1]}.png`}
+                  <LazyLoadImage
+                    src={`https://static.ui.com/fingerprint/ui/icons/${device.icon.id}_${32}x${32}.png`}
                     alt={`${device.product.name}`}
+                    width={32}
+                    height={32}
+                    effect="opacity"
                   />
+                  <img />
                 </div>
               </IconCell>
               <TableCell colSpan={2}>{device.line.name}</TableCell>

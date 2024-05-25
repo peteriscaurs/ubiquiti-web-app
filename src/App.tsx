@@ -1,11 +1,11 @@
 import { useEffect, useState, createContext } from 'react'
-import Header from './Header'
-import Toolbar from './Toolbar'
+import Header from './header/Header'
+import Toolbar from './header/Toolbar'
 import axios from 'axios'
-import { Device } from './api'
+import { Device } from './types/api'
 import { Navigate, Route, Routes } from 'react-router-dom'
-import DevicesView from './DevicesView'
-import DeviceInfo from './DeviceInfo'
+import DevicesView from './devices-view/DevicesView'
+import DeviceInfo from './device-info/DeviceInfo'
 import NotFoundView from './NotFoundView'
 
 interface AppContextType {

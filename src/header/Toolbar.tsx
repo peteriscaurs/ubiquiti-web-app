@@ -1,17 +1,17 @@
 import styled from 'styled-components'
-import listDefault from './assets/list_default.svg'
-import listActive from './assets/list_active.svg'
-import gridDefault from './assets/grid_default.svg'
-import gridActive from './assets/grid_active.svg'
-import ActionButton from './components/ActionButton'
-import SearchInput from './components/SearchInput'
-import SelectFilter from './components/SelectFilter'
+import listDefault from '../assets/list_default.svg'
+import listActive from '../assets/list_active.svg'
+import gridDefault from '../assets/grid_default.svg'
+import gridActive from '../assets/grid_active.svg'
+import backIcon from '../assets/back_icon.svg'
+import ActionButton from './ActionButton'
+import SearchInput from './SearchInput'
+import SelectFilter from './SelectFilter'
 import { useLocation, useNavigate } from 'react-router-dom'
-import backIcon from './assets/back_icon.svg'
-import IconButton from './components/IconButton'
-import { toolbarHeight } from './constants'
+import IconButton from './IconButton'
+import { toolbarHeight } from '../constants'
 import { useContext } from 'react'
-import { AppContext } from './App'
+import { AppContext } from '../App'
 
 const StyledToolbar = styled.nav`
   display: flex;
@@ -29,10 +29,11 @@ const StyledActions = styled.div`
   gap: 8px;
 `
 
-const Title = styled.span`
+const Title = styled.h2`
   flex-grow: 1;
   text-align: center;
   font-size: 14px;
+  font-weight: normal;
   color: rgba(0, 0, 0, 0.65);
 `
 export type View = 'list' | 'grid'

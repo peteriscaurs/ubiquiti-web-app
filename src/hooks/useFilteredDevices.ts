@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom"
-import { Device } from "./api"
+import { Device } from "../types/api"
 
 export const useFilteredDevices = (devices: Device[]) => {
 	const [searchParams] = useSearchParams()

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { headerHeight } from './constants'
-import LogoLink from './components/LogoLink'
+import { headerHeight } from '../constants'
+import LogoLink from './LogoLink'
 
 const StyledHeader = styled.header`
   display: flex;
@@ -22,7 +22,7 @@ const StyledAppName = styled.div`
   }
 `
 
-const StyledAuthorName = styled.label`
+const StyledAuthorName = styled.p`
   font-size: 14px;
   color: rgba(0, 0, 0, 0.65);
   margin-right: 14px;

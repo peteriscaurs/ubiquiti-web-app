@@ -10,7 +10,7 @@ const StyledButton = styled.button<{ color: keyof typeof colors }>`
   background-color: ${(props) => colors[props.color]};
 `
 
-interface CrossButtonProps {
+interface IconButtonProps {
   handleOnClick: () => void
   color?: keyof typeof colors
   icon: string
@@ -20,7 +20,7 @@ export default function IconButton({
   handleOnClick,
   color = 'white',
   icon,
-}: CrossButtonProps) {
+}: IconButtonProps) {
   return (
     <StyledButton onClick={handleOnClick} color={color}>
       <img src={icon} alt="" />

@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
-import { Device } from './api'
-import { useFilteredDevices } from './useFilteredDevices'
-import StyledLink from './components/StyledLink'
+import { Device } from '../../types/api'
+import { useFilteredDevices } from '../../hooks/useFilteredDevices'
+import StyledLink from '../StyledLink'
 
 import 'react-lazy-load-image-component/src/effects/opacity.css'
 
-const DeviceGridContainer = styled.div`
+const DeviceGridContainer = styled.main`
   margin: 23px 55px;
 `
 

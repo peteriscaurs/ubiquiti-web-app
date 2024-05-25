@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom'
 import styled from 'styled-components'
 import IconButton from './IconButton'
 import { AppContext } from '../App'
-import { Device } from '../api'
+import { Device } from '../types/api'
 import closeIcon from '../assets/close_icon.svg'
 import { headerHeight, toolbarHeight } from '../constants'
 

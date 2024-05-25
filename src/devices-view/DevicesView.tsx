@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom'
-import DeviceList from './DeviceList'
-import DeviceGrid from './DeviceGrid'
+import DeviceList from './views/DeviceList'
+import DeviceGrid from './views/DeviceGrid'
 import { useContext } from 'react'
-import { AppContext } from './App'
+import { AppContext } from '../App'
 
 const DevicesView = () => {
   const { view } = useParams()

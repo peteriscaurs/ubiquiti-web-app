@@ -2,11 +2,11 @@ import { useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import styled from 'styled-components'
-import { AppContext } from './App'
+import { AppContext } from '../App'
 
 import 'react-lazy-load-image-component/src/effects/opacity.css'
 
-const DeviceInfoContainer = styled.div`
+const DeviceInfoContainer = styled.main`
   margin-top: 160px;
   display: flex;
   justify-content: center;

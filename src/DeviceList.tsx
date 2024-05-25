@@ -73,6 +73,7 @@ export default function DeviceList({ devices }: DeviceListProps) {
                   <LazyLoadImage
                     src={`https://static.ui.com/fingerprint/ui/icons/${device.icon.id}_${32}x${32}.png`}
                     alt={`${device.product.name}`}
+                    style={{ objectFit: 'cover' }}
                     width={32}
                     height={32}
                     effect="opacity"

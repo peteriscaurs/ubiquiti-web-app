@@ -5,12 +5,24 @@ import StyledLink from './components/StyledLink'
 
 const DeviceListContainer = styled.div`
   margin: 23px 104px;
+
+  @media (max-width: 992px) {
+    & {
+      margin: 23px 14px;
+    }
+  }
 `
 
 const StyledTable = styled.table`
   width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
+`
+
+const StyledRow = styled.tr`
+  &:hover {
+    background-color: rgb(251, 251, 251);
+  }
 `
 
 const TableCell = styled.td`
@@ -26,8 +38,7 @@ const TableHeadCell = styled(TableCell)`
 `
 
 const IconCell = styled(TableCell)`
-  display: flex;
-  justify-content: end;
+  text-align: end;
   padding-right: 24px;
   font-size: 14px;
 `
@@ -44,7 +55,7 @@ export default function DeviceList({ devices }: DeviceListProps) {
       <StyledTable>
         <thead>
           <tr>
-            <IconCell style={{ color: '#BDBDBD' }} colSpan={1}>
+            <IconCell style={{ color: 'rgb(189, 189, 189)' }} colSpan={1}>
               {filteredDevices.length} devices
             </IconCell>
             <TableHeadCell colSpan={2}>PRODUCT LINE</TableHeadCell>
@@ -53,12 +64,14 @@ export default function DeviceList({ devices }: DeviceListProps) {
         </thead>
         <tbody>
           {filteredDevices.map((device) => (
-            <tr key={device.id}>
+            <StyledRow key={device.id}>
               <IconCell colSpan={1}>
-                <img
-                  src={`https://static.ui.com/fingerprint/ui/icons/${device.icon.id}_${device.icon.resolutions[1][0]}x${device.icon.resolutions[1][1]}.png`}
-                  alt={`${device.product.name}`}
-                />
+                <div style={{ display: 'flex', justifyContent: 'end' }}>
+                  <img
+                    src={`https://static.ui.com/fingerprint/ui/icons/${device.icon.id}_${device.icon.resolutions[1][0]}x${device.icon.resolutions[1][1]}.png`}
+                    alt={`${device.product.name}`}
+                  />
+                </div>
               </IconCell>
               <TableCell colSpan={2}>{device.line.name}</TableCell>
               <TableCell colSpan={5}>
@@ -66,7 +79,7 @@ export default function DeviceList({ devices }: DeviceListProps) {
                   {device.product.name}
                 </StyledLink>
               </TableCell>
-            </tr>
+            </StyledRow>
           ))}
         </tbody>
       </StyledTable>

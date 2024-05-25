@@ -131,16 +131,16 @@ export default function SelectFilter() {
               onClick={() => {
                 setSearchParams((prev) => {
                   const prevLines = deserialize(prev.get('lines') || '')
-                  prevLines.includes(device.line.name)
+                  prevLines.includes(device.line.id)
                     ? prev.set(
                         'lines',
                         serialize(
-                          prevLines.filter((item) => item !== device.line.name),
+                          prevLines.filter((item) => item !== device.line.id),
                         ),
                       )
                     : prev.set(
                         'lines',
-                        serialize([...prevLines, device.line.name]),
+                        serialize([...prevLines, device.line.id]),
                       )
                   return prev
                 })
@@ -148,7 +148,7 @@ export default function SelectFilter() {
             >
               <StyledCheckbox
                 type="checkbox"
-                checked={checkedItems.includes(device.line.name)}
+                checked={checkedItems.includes(device.line.id)}
                 onChange={() => {}}
               />
               {device.line.name}

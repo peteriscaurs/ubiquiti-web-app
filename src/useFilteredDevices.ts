@@ -10,7 +10,7 @@ export const useFilteredDevices = (devices: Device[]) => {
   const filteredDevices = devices
     .filter((device) => device.product.name.toLowerCase().includes(query || ''))
     .filter((device) =>
-      lines?.length ? lines?.includes(device.line.name) : device,
+      lines?.length ? lines?.includes(device.line.id) : device,
     )
 	
 	return { filteredDevices }

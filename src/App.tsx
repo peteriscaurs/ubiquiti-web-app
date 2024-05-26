@@ -10,21 +10,24 @@ import ErrorMessage from './ErrorMessage'
 
 interface AppContextType {
   deviceList: Device[]
+  error?: string
 }
 
 export const AppContext = createContext<AppContextType>({ deviceList: [] })
 
 function App() {
   const [deviceList, setDeviceList] = useState<Device[]>([])
+  const [error, setError] = useState()
 
   useEffect(() => {
     axios
       .get('https://static.ui.com/fingerprint/ui/public.json')
       .then((response) => setDeviceList(response.data.devices))
+      .catch((error) => setError(error.message))
   }, [])
 
   return (
-    <AppContext.Provider value={{ deviceList }}>
+    <AppContext.Provider value={{ deviceList, error }}>
       <Header author="Pēteris Čaurs" />
       <Toolbar />
       <Routes>

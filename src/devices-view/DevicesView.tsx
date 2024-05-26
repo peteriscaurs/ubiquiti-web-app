@@ -9,9 +9,13 @@ import ErrorMessage from '../ErrorMessage'
 const DevicesView = () => {
   const { view } = useParams()
 
-  const { deviceList } = useContext(AppContext)
+  const { deviceList, error } = useContext(AppContext)
 
   const { filteredDevices } = useFilteredDevices(deviceList)
+
+  if (error) {
+    return <ErrorMessage message={error} />
+  }
 
   if (!filteredDevices.length) {
     return <ErrorMessage message="No results found for your search query." />

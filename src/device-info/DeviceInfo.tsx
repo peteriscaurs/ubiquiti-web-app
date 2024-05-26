@@ -24,6 +24,11 @@ const StyledProductBody = styled.div`
 
 const StyledProductDetails = styled.div`
   width: 400px;
+  @media (max-width: 576px) {
+    & {
+      width: 250px;
+    }
+  }
 `
 
 const ProductDetailsRow = styled.div`

@@ -71,7 +71,16 @@ export default function Toolbar() {
         </>
       ) : (
         <>
-          <IconButton icon={backIcon} handleOnClick={() => navigate(-1)} />
+          <IconButton
+            icon={backIcon}
+            handleOnClick={() => {
+              if (window.history.length > 1) {
+                navigate(-1)
+              } else {
+                navigate('/')
+              }
+            }}
+          />
           <Title>{device?.product.name}</Title>
         </>
       )}

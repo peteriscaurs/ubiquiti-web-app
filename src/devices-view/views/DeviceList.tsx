@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { Device } from '../../types/api'
-import { useFilteredDevices } from '../../hooks/useFilteredDevices'
 import StyledLink from '../StyledLink'
 
 import 'react-lazy-load-image-component/src/effects/opacity.css'
@@ -51,22 +50,20 @@ interface DeviceListProps {
 }
 
 export default function DeviceList({ devices }: DeviceListProps) {
-  const { filteredDevices } = useFilteredDevices(devices)
-
   return (
     <DeviceListContainer>
       <StyledTable>
         <thead>
           <tr>
             <IconCell style={{ color: 'rgb(189, 189, 189)' }} colSpan={1}>
-              {filteredDevices.length} devices
+              {devices.length} devices
             </IconCell>
             <TableHeadCell colSpan={2}>PRODUCT LINE</TableHeadCell>
             <TableHeadCell colSpan={5}>NAME</TableHeadCell>
           </tr>
         </thead>
         <tbody>
-          {filteredDevices.map((device) => (
+          {devices.map((device) => (
             <StyledRow key={device.id}>
               <IconCell colSpan={1}>
                 <div style={{ display: 'flex', justifyContent: 'end' }}>

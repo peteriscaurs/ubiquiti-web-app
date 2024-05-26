@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { Device } from '../../types/api'
-import { useFilteredDevices } from '../../hooks/useFilteredDevices'
 import StyledLink from '../StyledLink'
 
 import 'react-lazy-load-image-component/src/effects/opacity.css'
@@ -58,13 +57,11 @@ interface DeviceListProps {
 }
 
 export default function DeviceGrid({ devices }: DeviceListProps) {
-  const { filteredDevices } = useFilteredDevices(devices)
-
   return (
     <DeviceGridContainer>
-      <StyledDevicesCount>{filteredDevices.length} devices</StyledDevicesCount>
+      <StyledDevicesCount>{devices.length} devices</StyledDevicesCount>
       <StyledGrid>
-        {filteredDevices.map((device) => (
+        {devices.map((device) => (
           <DeviceCard key={device.id}>
             <ImageContainer>
               <LazyLoadImage

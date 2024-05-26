@@ -1,30 +1,35 @@
-# React + TypeScript + Vite
+# Ubiquiti Device Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+Ubiquiti Device Explorer is a web application designed for Ubiquiti employees to explore, find, look up, and share information about all Ubiquiti devices. This application fetches data from Ubiquiti's public device database and displays it in an intuitive and searchable interface.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- Device List and Grid View: Browse all Ubiquiti devices
+- Search: Search for devices by name
+- Filter: Filter devices by product line
+- Device Details: View detailed information about each device
+- URL Parameters: Search queries and filters are stored in URL parameters for easy sharing
+- Image lazy loading: Defer the loading of images until they are about to enter the viewport
+- Responsive Design: Optimized for various screen sizes
+- Error Handling: Graceful handling of API errors and application errors
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Future Enhancements
 
-- Configure the top-level `parserOptions` property like this:
+- Sticky Table Header: Implement a sticky table header for the device list to enhance UX.
+- Custom Checkboxes: Implement custom filter checkboxes that match the design specifications, including custom border colors, border-radius and the tick SVG.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Prerequisites
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Node.js (>=16.x)
+- yarn (>=1.x)
+
+## Installation
+
+1. Clone the repository
+2. Install dependencies with `yarn install`
+
+## Running the Application
+
+Start the development server with `yarn start`

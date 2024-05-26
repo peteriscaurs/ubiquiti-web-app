@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { View } from '../Toolbar'
+import { View } from './Toolbar'
 import { Link } from 'react-router-dom'
 
 const StyledActionButton = styled(Link)`

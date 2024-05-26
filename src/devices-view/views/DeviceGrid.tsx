@@ -50,6 +50,7 @@ const StyledDevicesCount = styled.p`
 
 const StyledLineName = styled.p`
   color: rgba(0, 0, 0, 0.45);
+  font-size: 14px;
 `
 
 interface DeviceListProps {

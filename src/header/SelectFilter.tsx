@@ -12,6 +12,7 @@ const serialize = (selectedIds: string[]) => selectedIds.join(',')
 const deserialize = (serializedString: string) => serializedString.split(',')
 
 const StyledButton = styled.button`
+  color: rgb(0, 0, 0, 0.45);
   border: none;
   background-color: white;
 `
@@ -38,6 +39,7 @@ const DropdownMenuItem = styled.li`
   align-items: center;
   color: black;
   padding: 4px 16px;
+  color: rgb(0, 0, 0, 0.65);
   cursor: pointer;
 
   &:hover {
@@ -68,7 +70,7 @@ const CloseFilter = styled.div`
 `
 
 const FilterName = styled.div`
-  padding: 14px;
+  padding: 20px 14px;
 `
 
 const uniqueLines = (devices: Device[]) => {
@@ -120,7 +122,7 @@ export default function SelectFilter() {
       <StyledButton onClick={toggleDropdown}>Filter</StyledButton>
       <DropdownMenu ref={dropdownRef} $isOpen={isOpen}>
         <CloseFilter>
-          <span>Filter</span>
+          <span style={{ color: 'rgb(0, 0, 0, 0.65)' }}>Filter</span>
           <IconButton icon={closeIcon} handleOnClick={toggleDropdown} />
         </CloseFilter>
         <ScrollableSection>

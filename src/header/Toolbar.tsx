@@ -34,7 +34,7 @@ const Title = styled.h2`
   text-align: center;
   font-size: 14px;
   font-weight: normal;
-  color: rgba(0, 0, 0, 0.65);
+  color: rgba(0, 0, 0, 0.45);
 `
 export type View = 'list' | 'grid'
 

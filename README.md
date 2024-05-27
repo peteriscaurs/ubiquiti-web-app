@@ -34,3 +34,9 @@ Ubiquiti Device Explorer is a web application designed for Ubiquiti employees to
 ## Running the Application
 
 Start the development server with `yarn start`
+
+## Build the App
+
+Build the application for production with `yarn build`
+
+This will create an optimized build of the app in the `dist` directory.

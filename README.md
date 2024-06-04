@@ -21,7 +21,7 @@ Ubiquiti Device Explorer is a web application designed for Ubiquiti employees to
 
 ## Prerequisites
 
-- Node.js (>=16.x)
+- Node.js ^18.18.0 || ^20.9.0 || >=21.1.0
 - yarn (>=1.x)
 
 ## Installation

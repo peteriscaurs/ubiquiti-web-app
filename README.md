@@ -17,8 +17,6 @@ Ubiquiti Device Explorer is a web application designed for Ubiquiti employees to
 
 ## Future Enhancements
 
-- URL parameters: Persist search filters when switching between list and grid views by ensuring URL parameters are retained
-- Sticky Table Header: Implement a sticky table header for the device list to enhance UX.
 - Custom Checkboxes: Implement custom filter checkboxes that match the design specifications, including custom border colors, border-radius and the tick SVG.
 
 ## Prerequisites

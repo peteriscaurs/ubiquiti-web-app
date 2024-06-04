@@ -1,10 +1,10 @@
-import { useParams } from 'react-router-dom'
-import DeviceList from './views/DeviceList'
-import DeviceGrid from './views/DeviceGrid'
 import { useContext } from 'react'
+import { useParams } from 'react-router-dom'
 import { AppContext } from '../App'
-import { useFilteredDevices } from '../hooks/useFilteredDevices'
 import ErrorMessage from '../ErrorMessage'
+import { useFilteredDevices } from '../hooks/useFilteredDevices'
+import DeviceGrid from './views/DeviceGrid'
+import DeviceList from './views/DeviceList'
 
 const DevicesView = () => {
   const { view } = useParams()
@@ -15,6 +15,10 @@ const DevicesView = () => {
 
   if (error) {
     return <ErrorMessage message={error} />
+  }
+
+  if (!filteredDevices.length && !error) {
+    return <ErrorMessage message="Loading..." />
   }
 
   if (!filteredDevices.length) {

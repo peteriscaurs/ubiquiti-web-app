@@ -1,5 +1,5 @@
-import styled from 'styled-components'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
+import styled from 'styled-components'
 import { Device } from '../../types/api'
 import StyledLink from '../StyledLink'
 
@@ -33,7 +33,12 @@ const TableCell = styled.td`
   color: rgba(0, 0, 0, 0.45);
 `
 
-const TableHeadCell = styled(TableCell)`
+const TableHeadCell = styled.td`
+  padding: 5px;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  box-shadow: inset 0 -1px 0 rgb(237, 237, 240);
   color: rgb(79, 79, 79);
   font-weight: bold;
   font-size: 14px;
@@ -43,6 +48,14 @@ const IconCell = styled(TableCell)`
   text-align: end;
   padding-right: 24px;
   font-size: 14px;
+`
+
+const IconHeadCell = styled(TableHeadCell)`
+  color: rgb(189, 189, 189);
+  background-color: white;
+  text-align: right;
+  padding-right: 24px;
+  font-weight: normal;
 `
 
 interface DeviceListProps {
@@ -55,9 +68,7 @@ export default function DeviceList({ devices }: DeviceListProps) {
       <StyledTable>
         <thead>
           <tr>
-            <IconCell style={{ color: 'rgb(189, 189, 189)' }} colSpan={1}>
-              {devices.length} devices
-            </IconCell>
+            <IconHeadCell colSpan={1}>{devices.length} devices</IconHeadCell>
             <TableHeadCell colSpan={2}>PRODUCT LINE</TableHeadCell>
             <TableHeadCell colSpan={5}>NAME</TableHeadCell>
           </tr>
